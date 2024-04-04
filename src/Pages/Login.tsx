@@ -28,7 +28,7 @@ export const Login = () => {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      navigate('/dashboard');
+      navigate('/todos');
     }
   }, [isAuthenticated]);
 
@@ -90,7 +90,7 @@ export const Login = () => {
                   Don't Have an Account? Register Here
                 </Link>
                 <Center>
-                  <Button colorScheme="teal" w="100%" mt={2}>
+                  <Button type="submit" colorScheme="teal" w="100%" mt={2}>
                     Submit
                   </Button>
                 </Center>
