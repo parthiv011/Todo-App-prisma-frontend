@@ -13,7 +13,7 @@ export const userAtom = atom<InputUser>({
   default: selector<InputUser>({
     key: 'userAtomSelector',
     get: async () => {
-      let user: InputUser = {
+      const user: InputUser = {
         userId: '',
         username: '',
         firstName: '',
@@ -26,20 +26,19 @@ export const userAtom = atom<InputUser>({
 
       try {
         const getUserDetails = await axios.get(
-          'http://localhost:3000/api/user',
+          'http://localhost:3000/api/user/',
           {
             headers: {
               Authorization: `${token}`,
             },
           }
         );
-
-        user = {
-          userId: getUserDetails.data.id,
-          username: getUserDetails.data.username,
-          firstName: getUserDetails.data.firstName,
-          lastName: getUserDetails.data.lastName,
-        };
+        
+        console.log(token);
+        user.userId = getUserDetails.data.id;
+        user.username = getUserDetails.data.username;
+        user.firstName = getUserDetails.data.firstName;
+        user.lastName = getUserDetails.data.lastName;
       } catch (e) {
         console.error('Error Fetching userDetails', e);
         localStorage.removeItem('token');

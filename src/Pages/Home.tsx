@@ -1,3 +1,3 @@
 export const Home = () => {
-    return <>Home page!</>
-}
+  return <>Home page!</>;
+};
